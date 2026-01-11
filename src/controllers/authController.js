@@ -6,6 +6,17 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        if(email.length === 0){
+            return res.status(400).json({
+                message: "Email is required"
+            })
+        }
+        if(password.length === 0){
+            return res.status(400).json({
+                message: "Password is required"
+            })
+        }
+
         if(!validator.isEmail(email)){
             return res.status(400).json({
                 message: "Email not valid, please try again"
@@ -47,6 +58,27 @@ exports.register = async (req, res) => {
     const { fullname, email, password, passwordConf } = req.body;
 
     try {
+        if(fullname.length === 0){
+            return res.status(400).json({
+                message: "Full Name is required"
+            })
+        }
+        if(email.length === 0){
+            return res.status(400).json({
+                message: "Email is required"
+            })
+        }
+        if(password.length === 0){
+            return res.status(400).json({
+                message: "Password is required"
+            })
+        }
+        if(passwordConf.length === 0){
+            return res.status(400).json({
+                message: "Confirm Password is required"
+            })
+        }
+
         if(fullname.length < 3){
             return res.status(400).json({
                 message: "Full Name must more than or equal 3 characters"

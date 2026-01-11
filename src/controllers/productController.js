@@ -3,6 +3,7 @@ const Products = require("../models/Products")
 exports.getAllProductItem = async (req, res) => {
     try {
         const products = await Products.getAllProductItem()
+        console.log(products[0])
         return res.status(200).json({
             products: products[0]
         })
