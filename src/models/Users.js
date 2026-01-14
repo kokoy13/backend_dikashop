@@ -2,7 +2,7 @@ const db = require("../../config/db")
 
 class Users{
     static async findUserByEmail(email) {
-        return await db.query("SELECT email, password FROM users WHERE email = ?", [email])
+        return await db.query("SELECT id, email, password FROM users WHERE email = ?", [email])
     }
 
     static async createUser(full_name, email, password){
